@@ -13,3 +13,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'spring',        group: :development
 gem 'dotenv-rails',  groups: [:development, :test]
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'capybara', '~> 2.4'
+end
