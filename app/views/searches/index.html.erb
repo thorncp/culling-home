@@ -27,14 +27,14 @@
       <tbody>
         <% @searches.each do |search| %>
           <tr>
-          <td><%= search.description %></td>
-          <td><%= link_to search.url, search.url %></td>
-          <td class="text-right">
-            <%= link_to icon("pencil"), edit_search_path(search), class: "btn btn-xs btn-warning" %>
-            <%= link_to icon("remove"), search, method: :delete, class: "btn btn-xs btn-danger", data: { confirm: 'Are you sure?' } %>
-          </td>
-        </tr>
-      <% end %>
+            <td><%= search.description %></td>
+            <td><%= link_to search.url, search.url %></td>
+            <td class="text-right">
+              <%= link_to icon("pencil"), edit_search_path(search), class: "btn btn-xs btn-warning" %>
+              <%= link_to icon("remove"), search, method: :delete, class: "btn btn-xs btn-danger", data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
     <% else %>
