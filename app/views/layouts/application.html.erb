@@ -15,6 +15,17 @@
   <%= render "layouts/menu" %>
 
   <div class="container">
+    <div id="alerts">
+      <% flash.each do |id, message| %>
+        <div class="alert alert-dismissible <%= alert_class_for id %>" role="alert">
+          <button type="button" class="close" data-dismiss="alert">
+            <%= icon "remove" %>
+          </button>
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+
     <%= yield %>
   </div>
 
