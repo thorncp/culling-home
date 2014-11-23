@@ -1,0 +1,36 @@
+<% if listings.any? %>
+  <table class="table table-striped listings">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Bart</th>
+        <th>Neighborhood</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% listings.each do |listing| %>
+        <%= content_tag_for :tr, listing do %>
+          <td><%= link_to listing.title, listing.href %></td>
+          <td><%= number_to_currency listing.price, precision: 0 %></td>
+          <td>N/A</td>
+          <td><%= listing.neighborhood %></td>
+          <td class="text-right">
+            <% if listing.are_interested.nil? %>
+              <%= link_to icon("ok"), listing_path(listing, listing: { are_interested: true }), class: "btn btn-xs btn-success", method: :patch %>
+            <% end %>
+            <%= link_to icon("remove"), listing_path(listing, listing: { are_interested: false }), class: "btn btn-xs btn-danger", method: :patch %>
+          </td>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+  <div class="jumbotron">
+    <h2>Nothing here!</h2>
+    <p class="lead">You're all caught up.</p>
+  </div>
+<% end %>

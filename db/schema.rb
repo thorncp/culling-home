@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141122232743) do
+ActiveRecord::Schema.define(version: 20141123012140) do
+
+  create_table "listings", force: true do |t|
+    t.string   "title"
+    t.string   "href"
+    t.integer  "price"
+    t.string   "neighborhood"
+    t.boolean  "has_map"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "are_interested"
+    t.boolean  "is_unlisted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "searches", force: true do |t|
     t.string   "description"

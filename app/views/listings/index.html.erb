@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Interested (<%= @interested_listings.count %>)</h1>
+    <%= render partial: "table", locals: { listings: @interested_listings } %>
+  </div>
+
+  <div class="col-md-12">
+    <h1>Pending (<%= @pending_listings.count %>)</h1>
+    <%= render partial: "table", locals: { listings: @pending_listings } %>
+  </div>
+</div>
