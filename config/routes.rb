@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :searches
   resources :settings
 
-  root to: "home#index"
+  root to: redirect("/listings")
 end
