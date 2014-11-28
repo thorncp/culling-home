@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   def index
-    @pending_listings = Listing.pending
+    @pending_listings = Listing.pending.bart_max_distance(Setting.bart_max_distance)
     @interested_listings = Listing.interested
   end
 

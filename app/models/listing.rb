@@ -8,4 +8,8 @@ class Listing < ActiveRecord::Base
   def self.pending
     where(are_interested: nil)
   end
+
+  def self.bart_max_distance(distance)
+    where("bart_distance <= ?", distance)
+  end
 end
