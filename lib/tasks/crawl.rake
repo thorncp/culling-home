@@ -9,4 +9,16 @@ namespace :crawl do
       end
     end
   end
+
+  desc "Crawl listings for location data"
+  task :locations => :environment do
+    require "craigslist_location_parser"
+
+    listings = Listing.where(has_map: true, latitude: nil, longitude: nil)
+
+    listings.find_each do |listing|
+      location = CraigslistLocationParser.new(listing).location
+      listing.update_attributes(location)
+    end
+  end
 end
