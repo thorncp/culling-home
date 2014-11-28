@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128044954) do
+ActiveRecord::Schema.define(version: 20141128062501) do
 
   create_table "bart_stations", force: true do |t|
     t.string   "name"
@@ -40,7 +40,10 @@ ActiveRecord::Schema.define(version: 20141128044954) do
     t.boolean  "is_unlisted"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "bart_station_id"
   end
+
+  add_index "listings", ["bart_station_id"], name: "index_listings_on_bart_station_id"
 
   create_table "searches", force: true do |t|
     t.string   "description"
