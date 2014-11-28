@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123012140) do
+ActiveRecord::Schema.define(version: 20141128044954) do
+
+  create_table "bart_stations", force: true do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
+    t.string   "city"
+    t.string   "county"
+    t.string   "state"
+    t.string   "zipcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "listings", force: true do |t|
     t.string   "title"
