@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def title(content)
+    content_for :title, content
+  end
+
   def nav_link_to(content, url)
     klass = request.path.include?(url) ? "active" : nil
     content_tag :li, class: klass do
