@@ -10,6 +10,7 @@ gem 'rails', '4.1.8'
 gem 'sass-rails', '~> 4.0.3'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'unicorn'
 gem 'validate_url', '~> 1.0'
 
 group :production do
