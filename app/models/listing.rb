@@ -10,6 +10,6 @@ class Listing < ActiveRecord::Base
   end
 
   def self.bart_max_distance(distance)
-    where("bart_distance <= ?", distance)
+    where("bart_distance is null OR bart_distance <= ?", distance)
   end
 end
