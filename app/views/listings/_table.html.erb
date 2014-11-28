@@ -5,6 +5,7 @@
         <th>Title</th>
         <th>Price</th>
         <th>Bart</th>
+        <th>Bart</th>
         <th>Neighborhood</th>
         <th></th>
       </tr>
@@ -17,7 +18,14 @@
           <td><%= number_to_currency listing.price, precision: 0 %></td>
           <td>
             <% if listing.bart_station %>
-              <%= listing.bart_station.abbreviation %>
+              <%= listing.bart_distance %>
+            <% else %>
+              ---
+            <% end %>
+          </td>
+          <td>
+            <% if listing.bart_station %>
+              <%= content_tag :abbr, listing.bart_station.abbreviation, title: listing.bart_station.name %>
             <% else %>
               ---
             <% end %>
