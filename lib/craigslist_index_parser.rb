@@ -1,4 +1,5 @@
 require "craigslist_index_row_parser"
+require "net/http"
 
 class CraigslistIndexParser
   attr_reader :search

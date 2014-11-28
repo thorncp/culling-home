@@ -1,3 +1,5 @@
+require "net/http"
+
 class CraigslistLocationParser
   attr_reader :listing
 

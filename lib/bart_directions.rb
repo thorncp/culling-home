@@ -1,3 +1,5 @@
+require "net/http"
+
 class BartDirections
   attr_reader :listing
 
