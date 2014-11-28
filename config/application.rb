@@ -4,7 +4,7 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
-module FindingHome
+module CullingHome
   class Application < Rails::Application
   end
 end
