@@ -17,7 +17,8 @@ namespace :crawl do
     listings = Listing.where(has_map: true, latitude: nil, longitude: nil)
 
     listings.find_each do |listing|
-      location = CraigslistLocationParser.new(listing).location
+      # TODO: don't `rescue next` this is super bad
+      location = CraigslistLocationParser.new(listing).location rescue next
       listing.update_attributes(location)
     end
   end
