@@ -15,7 +15,13 @@
         <%= content_tag_for :tr, listing do %>
           <td><%= link_to listing.title, listing.href %></td>
           <td><%= number_to_currency listing.price, precision: 0 %></td>
-          <td>N/A</td>
+          <td>
+            <% if listing.bart_station %>
+              <%= listing.bart_station.abbreviation %>
+            <% else %>
+              ---
+            <% end %>
+          </td>
           <td><%= listing.neighborhood %></td>
           <td class="text-right">
             <% if listing.are_interested.nil? %>
