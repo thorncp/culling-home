@@ -22,4 +22,16 @@ namespace :crawl do
       listing.update_attributes(location)
     end
   end
+
+  desc "Crawl for unlisted listings and delete them"
+  task :unlisted => :environment do
+    require "craigslist_unlisted_parser"
+
+    listings = Listing.where("are_interested is null OR are_interested = ?", true)
+    listings.find_each do |listing|
+      if CraigslistUnlistedParser.new(listing).unlisted?
+        listing.destroy
+      end
+    end
+  end
 end
