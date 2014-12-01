@@ -13,7 +13,7 @@
 
     <tbody>
       <% listings.each do |listing| %>
-        <%= content_tag_for :tr, listing do %>
+        <%= content_tag_for :tr, listing, class: tr_class_for_listing(listing) do %>
           <td><%= link_to listing.title, listing.href %></td>
           <td><%= number_to_currency listing.price, precision: 0 %></td>
           <td>
@@ -32,9 +32,14 @@
           </td>
           <td><%= listing.neighborhood %></td>
           <td class="text-right">
+            <% if listing.are_interested && !listing.has_contacted %>
+              <%= link_to icon("bullhorn"), listing_path(listing, listing: { has_contacted: true }), class: "btn btn-xs btn-primary", method: :patch %>
+            <% end %>
+
             <% if listing.are_interested.nil? %>
               <%= link_to icon("ok"), listing_path(listing, listing: { are_interested: true }), class: "btn btn-xs btn-success", method: :patch %>
             <% end %>
+
             <%= link_to icon("remove"), listing_path(listing, listing: { are_interested: false }), class: "btn btn-xs btn-danger", method: :patch %>
           </td>
         <% end %>

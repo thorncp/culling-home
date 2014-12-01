@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128070945) do
+ActiveRecord::Schema.define(version: 20141201011615) do
 
   create_table "bart_stations", force: true do |t|
     t.string   "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20141128070945) do
     t.datetime "updated_at"
     t.integer  "bart_station_id"
     t.float    "bart_distance"
+    t.boolean  "has_contacted",   default: false
   end
 
   add_index "listings", ["bart_station_id"], name: "index_listings_on_bart_station_id"

@@ -17,6 +17,6 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:are_interested)
+    params.require(:listing).permit(:are_interested, :has_contacted)
   end
 end
