@@ -16,3 +16,21 @@ body {
 th {
   cursor: pointer;
 }
+
+.tablesorter-headerAsc {
+  .tablesorter-header-inner:after {
+    content: "\e155";
+    font-family: "Glyphicons Halflings";
+    font-size: 80%;
+    padding-left: 8px;
+  }
+}
+
+.tablesorter-headerDesc {
+  .tablesorter-header-inner:after {
+    content: "\e156";
+    font-family: "Glyphicons Halflings";
+    font-size: 80%;
+    padding-left: 8px;
+  }
+}
