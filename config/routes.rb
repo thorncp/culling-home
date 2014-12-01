@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :listings
+  resources :listings, only: [:index, :update]
   resources :searches
-  resources :settings
+  resources :settings, only: [:index, :edit, :update]
 
   root to: redirect("/listings")
 end
