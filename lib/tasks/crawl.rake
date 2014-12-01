@@ -49,4 +49,20 @@ namespace :crawl do
 
     puts
   end
+
+  desc "Crawl for listings contact information"
+  task :contact_info => :environment do
+    require "craigslist_contact_info_parser"
+
+    puts "Finding listing contact info"
+    listings = Listing.where("email is null AND (are_interested is null OR are_interested = ?)", true)
+
+    listings.find_each do |listing|
+      print "."
+      info = CraigslistContactInfoParser.new(listing).contact_info
+      listing.update_attributes(info)
+    end
+
+    puts
+  end
 end
