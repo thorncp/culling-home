@@ -1,3 +1,5 @@
+require "listing_emailer"
+
 class ListingsController < ApplicationController
   def index
     @pending_listings = Listing.pending.bart_max_distance(Setting.bart_max_distance)
@@ -7,7 +9,11 @@ class ListingsController < ApplicationController
   def update
     listing = Listing.find(params[:id])
     if listing.update(listing_params)
-      redirect_to listings_path, notice: "Listing updated."
+      if params[:email]
+        redirect_to ListingEmailer.new(listing).mailto
+      else
+        redirect_to listings_path, notice: "Listing updated."
+      end
     else
       flash[:error] = "Listing not updated."
       redirect_to listings_path

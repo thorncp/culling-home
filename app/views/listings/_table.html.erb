@@ -33,7 +33,12 @@
           <td><%= listing.neighborhood %></td>
           <td class="text-right">
             <% if listing.are_interested && !listing.has_contacted %>
-              <%= link_to icon("bullhorn"), listing_path(listing, listing: { has_contacted: true }), class: "btn btn-xs btn-primary", method: :patch %>
+              <% if listing.email %>
+                <%= link_to icon("envelope"), listing_path(listing, email: true, listing: { has_contacted: true }), class: "btn btn-xs btn-primary", method: :patch %>
+              <% else %>
+                <%= link_to icon("phone"), listing_path(listing, listing: { has_contacted: true }), class: "btn btn-xs btn-primary", method: :patch %>
+              <% end %>
+
             <% end %>
 
             <% if listing.are_interested.nil? %>
