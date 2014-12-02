@@ -8,7 +8,8 @@ namespace :crawl do
 
       CraigslistIndexParser.new(search).listings.each do |attrs|
         print "."
-        Listing.find_or_create_by(attrs)
+        listing = Listing.find_or_initialize_by(href: attrs[:href])
+        listing.update_attributes(attrs)
       end
 
       puts
