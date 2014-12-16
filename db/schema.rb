@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201023853) do
+ActiveRecord::Schema.define(version: 20141216193529) do
 
   create_table "bart_stations", force: true do |t|
     t.string   "name"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20141201023853) do
 
   create_table "settings", force: true do |t|
     t.string   "name"
-    t.string   "value"
+    t.text     "value",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
