@@ -13,6 +13,11 @@ body {
   }
 }
 
+.navbar .form-group {
+  color: #ffffff;
+  padding-right: 10px;
+}
+
 th {
   cursor: pointer;
 }
@@ -33,4 +38,11 @@ th {
     font-size: 80%;
     padding-left: 8px;
   }
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+  padding: 6px 0;
 }

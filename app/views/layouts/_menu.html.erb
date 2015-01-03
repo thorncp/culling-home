@@ -12,11 +12,21 @@
     </div>
 
     <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%= nav_link_to "Listings", listings_path %>
-        <%= nav_link_to "Searches", searches_path %>
-        <%= nav_link_to "Settings", settings_path %>
-      </ul>
+
+      <% if signed_in? %>
+        <%= form_tag sign_out_path, method: :delete, class: "navbar-form navbar-right" do %>
+          <div class="form-group">
+            <%= current_user.email %>
+          </div>
+          <button type="submit" class="btn">Sign out</button>
+        <% end %>
+
+        <ul class="nav navbar-nav">
+          <%= nav_link_to "Listings", listings_path %>
+          <%= nav_link_to "Searches", searches_path %>
+          <%= nav_link_to "Settings", settings_path %>
+        </ul>
+      <% end %>
     </div>
   </div>
 </nav>

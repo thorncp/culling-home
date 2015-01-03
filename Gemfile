@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.0'
 
 gem 'bootstrap-sass', '~> 3.3.1'
+gem 'clearance'
 gem 'geo-distance'
 gem 'jquery-rails'
 gem 'nokogiri'
@@ -18,7 +19,10 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'spring',        group: :development
+group :development do
+  gem 'spring'
+  gem 'letter_opener'
+end
 
 group :development, :test do
   gem 'capybara', '~> 2.4'
