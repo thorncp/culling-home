@@ -1,8 +1,9 @@
 class CraigslistIndexRowParser
-  attr_reader :row
+  attr_reader :row, :url
 
-  def initialize(row)
+  def initialize(row, url)
     @row = row
+    @url = url
   end
 
   def attributes
@@ -16,7 +17,7 @@ class CraigslistIndexRowParser
   end
 
   def href
-    "http://sfbay.craigslist.org" + row.css("a").attribute("href").value
+    url + row.css("a").attribute("href").value
   end
 
   def title
