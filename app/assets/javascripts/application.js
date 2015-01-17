@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require jquery.tablesorter.min
+//= require jquery.cookie
 //= require_tree .

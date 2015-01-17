@@ -7,11 +7,11 @@
 <div class="row">
   <div class="col-md-12">
     <h1>Interested (<%= @interested_listings.count %>)</h1>
-    <%= render partial: "table", locals: { listings: @interested_listings } %>
+    <%= render partial: "table", locals: { listings: @interested_listings, id: "interested" } %>
   </div>
 
   <div class="col-md-12">
     <h1>Pending (<%= @pending_listings.count %>)</h1>
-    <%= render partial: "table", locals: { listings: @pending_listings } %>
+    <%= render partial: "table", locals: { listings: @pending_listings, id: "pending" } %>
   </div>
 </div>
