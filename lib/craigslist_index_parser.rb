@@ -1,16 +1,19 @@
 require "craigslist_index_row_parser"
 require "net/http"
+require "uri"
 
 class CraigslistIndexParser
-  attr_reader :search
+  attr_reader :search, :base_url
 
   def initialize(search)
     @search = search
+    uri = URI.parse(search.url)
+    @base_url = "#{uri.scheme}://#{uri.host}"
   end
 
   def listings
     rows.map do |row|
-      CraigslistIndexRowParser.new(row).attributes
+      CraigslistIndexRowParser.new(row, base_url).attributes
     end
   end
 
