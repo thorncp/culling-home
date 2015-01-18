@@ -44,7 +44,11 @@ namespace :crawl do
     listings.find_each do |listing|
       print "."
       if CraigslistUnlistedParser.new(listing).unlisted?
-        listing.destroy
+        if listing.are_interested
+          listing.unlisted = true
+        else
+          listing.destroy
+        end
       end
     end
 
