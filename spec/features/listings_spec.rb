@@ -10,4 +10,15 @@ describe "Listings" do
       expect(page).not_to have_content("Awesome Listing")
     end
   end
+
+  context "when user is logged in" do
+    it "can see all listings" do
+      FactoryGirl.create :listing, title: "Awesome Listing"
+      user = FactoryGirl.create(:user)
+
+      visit listings_path(as: user)
+
+      expect(page).to have_content("Awesome Listing")
+    end
+  end
 end
