@@ -3,7 +3,7 @@ require "rails_helper"
 describe "Listings" do
   context "when user is not logged in" do
     it "cannot see any listings" do
-      Listing.create!(title: "Awesome Listing", href: "http://example.com/1")
+      FactoryGirl.create :listing, title: "Awesome Listing"
 
       visit listings_path
 
