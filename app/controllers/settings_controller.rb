@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
   def index
-    @settings = Setting.all
+    @settings = current_user.settings
   end
 
   def edit

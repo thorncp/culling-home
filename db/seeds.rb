@@ -1,16 +1,17 @@
-Setting.find_or_create_by!(name: "bart_max_distance", value: "1")
-Setting.find_or_create_by!(name: "email_body", value: <<END)
+user = User.find_or_create_by!(email: "user@example.com") do |user|
+  user.password = "password"
+end
+
+Setting.find_or_create_by!(name: "bart_max_distance", value: "1", user_id: user.id)
+Setting.find_or_create_by!(name: "email_body", value: <<END, user_id: user.id)
 Hi, we are interested in your listing.
 
 Please let us live there kthx.
 END
 
-User.find_or_create_by!(email: "user@example.com") do |user|
-  user.password = "password"
-end
-
 Search.find_or_create_by!(description: "Oakland apartments",
-                          url: "http://sfbay.craigslist.org/search/eby/apa?nh=58&nh=61&nh=62&nh=64&pets_cat=1")
+                          url: "http://sfbay.craigslist.org/search/eby/apa?nh=58&nh=61&nh=62&nh=64&pets_cat=1",
+                          user_id: user.id)
 
 
 BartStation.find_or_create_by!(name: "12th St. Oakland City Center",
