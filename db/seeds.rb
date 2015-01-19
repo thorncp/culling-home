@@ -5,6 +5,10 @@ Hi, we are interested in your listing.
 Please let us live there kthx.
 END
 
+User.find_or_create_by!(email: "user@example.com") do |user|
+  user.password = "password"
+end
+
 Search.find_or_create_by!(description: "Oakland apartments",
                           url: "http://sfbay.craigslist.org/search/eby/apa?nh=58&nh=61&nh=62&nh=64&pets_cat=1")
 
