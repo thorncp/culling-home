@@ -5,10 +5,11 @@ namespace :crawl do
 
     Search.find_each do |search|
       puts "Running search: #{search.description}"
+      user = search.user
 
       CraigslistIndexParser.new(search).listings.each do |attrs|
         print "."
-        listing = Listing.find_or_initialize_by(href: attrs[:href])
+        listing = user.listings.find_or_initialize_by(href: attrs[:href])
         listing.update_attributes(attrs)
       end
 

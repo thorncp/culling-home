@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119010759) do
+ActiveRecord::Schema.define(version: 20150126015831) do
 
   create_table "bart_stations", force: true do |t|
     t.string   "name"
@@ -45,9 +45,11 @@ ActiveRecord::Schema.define(version: 20150119010759) do
     t.boolean  "has_contacted",   default: false
     t.string   "email"
     t.boolean  "unlisted",        default: false
+    t.integer  "user_id",                         null: false
   end
 
   add_index "listings", ["bart_station_id"], name: "index_listings_on_bart_station_id"
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id"
 
   create_table "searches", force: true do |t|
     t.string   "description"

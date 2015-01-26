@@ -2,9 +2,11 @@ require "listing_emailer"
 
 class ListingsController < ApplicationController
   def index
-    @pending_listings =
-      Listing.pending.bart_max_distance(current_user.settings.bart_max_distance)
-    @interested_listings = Listing.interested
+    @pending_listings = current_user.
+      listings.
+      pending.
+      bart_max_distance(current_user.settings.bart_max_distance)
+    @interested_listings = current_user.listings.interested
   end
 
   def update

@@ -1,5 +1,6 @@
 class Listing < ActiveRecord::Base
   belongs_to :bart_station
+  belongs_to :user
 
   def self.interested
     where(are_interested: true)

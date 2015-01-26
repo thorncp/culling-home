@@ -4,5 +4,6 @@ FactoryGirl.define do
     sequence :href do |n|
       "http://neighborhood.example.com/listings/#{n}"
     end
+    user
   end
 end
