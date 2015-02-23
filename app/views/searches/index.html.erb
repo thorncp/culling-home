@@ -20,6 +20,7 @@
       <table class="table table-striped">
       <thead>
         <tr>
+          <th></th>
           <th>Description</th>
           <th>Url</th>
           <th></th>
@@ -29,6 +30,13 @@
       <tbody>
         <% @searches.each do |search| %>
           <tr>
+            <td>
+              <% if search.enabled %>
+                <%= link_to icon("pause"), search_path(search, search: { enabled: false }), method: :patch, class: "text-danger disable-search" %>
+              <% else %>
+                <%= link_to icon("play"), search_path(search, search: { enabled: true }), method: :patch, class: "text-success enable-search" %>
+              <% end %>
+            </td>
             <td><%= search.description %></td>
             <td><%= link_to search.url, search.url %></td>
             <td class="text-right">

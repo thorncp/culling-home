@@ -66,5 +66,25 @@ describe "Searches" do
 
       expect(page).not_to have_content "Ok Search"
     end
+
+    it "can disable a search" do
+      user = FactoryGirl.create(:user)
+      FactoryGirl.create(:search, user: user, description: "Ok Search", enabled: true)
+
+      visit searches_path(as: user)
+      page.find(".disable-search").click
+
+      expect(page).not_to have_selector(".disable-search")
+    end
+
+    it "can enable a search" do
+      user = FactoryGirl.create(:user)
+      FactoryGirl.create(:search, user: user, description: "Ok Search", enabled: false)
+
+      visit searches_path(as: user)
+      page.find(".enable-search").click
+
+      expect(page).not_to have_selector(".enable-search")
+    end
   end
 end
