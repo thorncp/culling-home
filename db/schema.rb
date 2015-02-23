@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150118020740) do
+ActiveRecord::Schema.define(version: 20150126015831) do
 
   create_table "bart_stations", force: true do |t|
     t.string   "name"
@@ -45,25 +45,32 @@ ActiveRecord::Schema.define(version: 20150118020740) do
     t.boolean  "has_contacted",   default: false
     t.string   "email"
     t.boolean  "unlisted",        default: false
+    t.integer  "user_id",                         null: false
   end
 
   add_index "listings", ["bart_station_id"], name: "index_listings_on_bart_station_id"
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id"
 
   create_table "searches", force: true do |t|
     t.string   "description"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",     null: false
   end
+
+  add_index "searches", ["user_id"], name: "index_searches_on_user_id"
 
   create_table "settings", force: true do |t|
     t.string   "name"
     t.text     "value",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",    null: false
   end
 
-  add_index "settings", ["name"], name: "index_settings_on_name", unique: true
+  add_index "settings", ["name", "user_id"], name: "index_settings_on_name_and_user_id", unique: true
+  add_index "settings", ["user_id"], name: "index_settings_on_user_id"
 
   create_table "users", force: true do |t|
     t.datetime "created_at",                     null: false

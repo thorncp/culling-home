@@ -1,14 +1,14 @@
 class SettingsController < ApplicationController
   def index
-    @settings = Setting.all
+    @settings = current_user.settings
   end
 
   def edit
-    @setting = Setting.find(params[:id])
+    @setting = current_user.settings.find(params[:id])
   end
 
   def update
-    @setting = Setting.find(params[:id])
+    @setting = current_user.settings.find(params[:id])
 
     if @setting.update(setting_params)
       redirect_to settings_path, notice: "Setting updated."

@@ -16,10 +16,10 @@
     <tbody>
       <% @settings.each do |setting| %>
         <%= content_tag_for :tr, setting do %>
-          <td><%= setting.name.humanize %></td>
+          <td><%= setting.name.titleize %></td>
           <td><%= setting.value %></td>
           <td class="text-right">
-            <%= link_to icon("pencil"), edit_setting_path(setting), class: "btn btn-xs btn-warning" %>
+            <%= link_to icon("pencil"), edit_setting_path(setting), class: "edit-setting btn btn-xs btn-warning" %>
           </td>
         <% end %>
       <% end %>

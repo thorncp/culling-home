@@ -7,7 +7,7 @@
 
   <div class="col-md-4">
     <div class="text-right">
-      <%= link_to new_search_path, class: "btn btn-success" do %>
+      <%= link_to new_search_path, id: "new-search", class: "btn btn-success" do %>
         <%= icon "plus" %>
       <% end %>
     </div>
@@ -32,8 +32,8 @@
             <td><%= search.description %></td>
             <td><%= link_to search.url, search.url %></td>
             <td class="text-right">
-              <%= link_to icon("pencil"), edit_search_path(search), class: "btn btn-xs btn-warning" %>
-              <%= link_to icon("remove"), search, method: :delete, class: "btn btn-xs btn-danger", data: { confirm: 'Are you sure?' } %>
+              <%= link_to icon("pencil"), edit_search_path(search), class: "edit-search btn btn-xs btn-warning" %>
+              <%= link_to icon("remove"), search, method: :delete, class: "delete-search btn btn-xs btn-danger", data: { confirm: 'Are you sure?' } %>
             </td>
           </tr>
         <% end %>
