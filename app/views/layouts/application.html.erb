@@ -7,7 +7,7 @@
   <%= yield :head %>
 
   <% if content_for? :title %>
-    <title>Culling Home ・ <%= yield :title %></title>
+    <title><%= yield :title %> ・ Culling Home </title>
   <% else %>
     <title>Culling Home</title>
   <% end %>
