@@ -38,7 +38,7 @@
               <% end %>
             </td>
             <td><%= search.description %></td>
-            <td><%= link_to search.url, search.url %></td>
+            <td><%= link_to search.url.truncate(40), search.url %></td>
             <td class="text-right">
               <%= link_to icon("pencil"), edit_search_path(search), class: "edit-search btn btn-xs btn-warning" %>
               <%= link_to icon("remove"), search, method: :delete, class: "delete-search btn btn-xs btn-danger", data: { confirm: 'Are you sure?' } %>
