@@ -3,7 +3,7 @@ namespace :crawl do
   task :listings => :environment do
     require "craigslist_index_parser"
 
-    Search.find_each do |search|
+    Search.where(enabled: true).find_each do |search|
       puts "Running search: #{search.description}"
       user = search.user
 
