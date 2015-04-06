@@ -41,12 +41,12 @@ namespace :crawl do
 
     puts "Finding unlisted listings"
 
-    listings = Listing.where("are_interested is null OR are_interested = ?", true)
+    listings = Listing.where("are_interested is null OR are_interested = ? and unlisted = ?", true, false)
     listings.find_each do |listing|
       print "."
       if CraigslistUnlistedParser.new(listing).unlisted?
         if listing.are_interested
-          listing.unlisted = true
+          listing.update_attributes(unlisted: true)
         else
           listing.destroy
         end
