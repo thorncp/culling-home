@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223015746) do
+ActiveRecord::Schema.define(version: 20160108183137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bart_stations", force: true do |t|
+  create_table "bart_stations", force: :cascade do |t|
     t.string   "name"
     t.string   "abbreviation"
     t.float    "latitude"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150223015746) do
     t.datetime "updated_at"
   end
 
-  create_table "listings", force: true do |t|
+  create_table "listings", force: :cascade do |t|
     t.string   "title"
     t.string   "href"
     t.integer  "price"
@@ -45,16 +45,23 @@ ActiveRecord::Schema.define(version: 20150223015746) do
     t.datetime "updated_at"
     t.integer  "bart_station_id"
     t.float    "bart_distance"
-    t.boolean  "has_contacted",   default: false
+    t.boolean  "has_contacted",             default: false
     t.string   "email"
-    t.boolean  "unlisted",        default: false
-    t.integer  "user_id",                         null: false
+    t.boolean  "unlisted",                  default: false
+    t.integer  "user_id",                                   null: false
+    t.float    "transit_travel_in_minutes"
+    t.string   "transit_directions_url"
+    t.integer  "walk_score"
+    t.integer  "transit_score"
+    t.integer  "bike_score"
+    t.string   "personal_crime_grade"
+    t.string   "property_crime_grade"
   end
 
   add_index "listings", ["bart_station_id"], name: "index_listings_on_bart_station_id", using: :btree
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
 
-  create_table "searches", force: true do |t|
+  create_table "searches", force: :cascade do |t|
     t.string   "description"
     t.string   "url"
     t.datetime "created_at"
@@ -65,7 +72,7 @@ ActiveRecord::Schema.define(version: 20150223015746) do
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
 
-  create_table "settings", force: true do |t|
+  create_table "settings", force: :cascade do |t|
     t.string   "name"
     t.text     "value",      null: false
     t.datetime "created_at"
@@ -76,7 +83,7 @@ ActiveRecord::Schema.define(version: 20150223015746) do
   add_index "settings", ["name", "user_id"], name: "index_settings_on_name_and_user_id", unique: true, using: :btree
   add_index "settings", ["user_id"], name: "index_settings_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "email",                          null: false

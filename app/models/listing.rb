@@ -2,6 +2,9 @@ class Listing < ActiveRecord::Base
   belongs_to :bart_station
   belongs_to :user
 
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
+
   def self.interested
     where(are_interested: true)
   end
