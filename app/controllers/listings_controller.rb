@@ -5,11 +5,13 @@ class ListingsController < ApplicationController
     @pending_listings = current_user.
       listings.
       pending.
-      order(price: :asc, transit_travel_in_minutes: :asc)
+      for_settings(current_user.settings).
+      order_by_price_and_transit_time
+
     @interested_listings = current_user.
       listings.
       interested.
-      order(price: :asc, transit_travel_in_minutes: :asc)
+      order_by_price_and_transit_time
   end
 
   def update
