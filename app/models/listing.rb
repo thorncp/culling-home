@@ -57,6 +57,10 @@ class Listing < ActiveRecord::Base
     grade_minimum(:property, grade)
   end
 
+  def user_settings
+    user.settings
+  end
+
   private
 
   def self.score_minimum(type, value)

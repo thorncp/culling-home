@@ -20,6 +20,9 @@ class ListingEmailer
   end
 
   def email_body
-    [Setting.email_body, listing.href].join("\n").gsub("\n", "%0D%0A")
+    [
+      listing.user_settings.email_body,
+      listing.href
+    ].join("\n").gsub("\n", "%0D%0A")
   end
 end
