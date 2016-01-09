@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+bundle install
+rake db:setup
+
+if ! [ -f .env ]; then
+  cp .env.template .env
+fi
