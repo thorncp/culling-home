@@ -2,9 +2,11 @@
 
 set -e
 
-bundle install
-rake db:setup
-
 if ! [ -f .env ]; then
   cp .env.template .env
 fi
+
+bundle install
+rake db:setup
+echo "\n\n"
+rake 'users:create[user@example.com]'
