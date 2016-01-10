@@ -5,3 +5,9 @@ A simple app to organize apartment searches on Craigslist.
 Run:
 
     ./bin/setup
+
+## Populate listings
+
+To populate the listings:
+
+    rake crawl:listings

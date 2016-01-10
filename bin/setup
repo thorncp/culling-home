@@ -7,6 +7,6 @@ if ! [ -f .env ]; then
 fi
 
 bundle install
-rake db:setup
+rake db:setup crawl:listings
 echo "\n\n"
 rake 'users:create[user@example.com]'
