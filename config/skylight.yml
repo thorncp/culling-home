@@ -1,8 +1,0 @@
----
-# The Skylight ID for the application.
-application: 26xQ7laitE9i
-
-# The authentication token for the application.
-authentication: 4tp4hKPiP4zdp8--PvD3weT9Zr6LpTfgoaogUXSkDcQ
-
-alert_log_file: log/skylight-alerts.log
