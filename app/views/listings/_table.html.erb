@@ -4,8 +4,9 @@
       <tr>
         <th>Title</th>
         <th>Price</th>
-        <th>Bart</th>
-        <th>Bart</th>
+        <th>Transit</th>
+        <th>Walk/Transit/Bike</th>
+        <th>Crime</th>
         <th>Neighborhood</th>
         <th></th>
       </tr>
@@ -17,19 +18,14 @@
           <td><%= link_to listing.title, listing.href %></td>
           <td><%= number_to_currency listing.price, precision: 0 %></td>
           <td>
-            <% if listing.bart_station %>
-              <%= listing.bart_distance %>
+            <% if listing.transit_travel_in_minutes %>
+              <%= link_to "#{listing.transit_travel_in_minutes.round} mins", listing.transit_directions_url %>
             <% else %>
               ---
             <% end %>
           </td>
-          <td>
-            <% if listing.bart_station %>
-              <%= content_tag :abbr, listing.bart_station.abbreviation, title: listing.bart_station.name %>
-            <% else %>
-              ---
-            <% end %>
-          </td>
+          <td><%= walk_score_info(listing) %></td>
+          <td><%= crime_rating_info(listing) %> </td>
           <td><%= listing.neighborhood %></td>
           <td class="text-right">
             <% if listing.are_interested && !listing.has_contacted %>

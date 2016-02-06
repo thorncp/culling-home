@@ -5,8 +5,13 @@ class ListingsController < ApplicationController
     @pending_listings = current_user.
       listings.
       pending.
-      bart_max_distance(current_user.settings.bart_max_distance)
-    @interested_listings = current_user.listings.interested
+      for_settings(current_user.settings).
+      order_by_price_and_transit_time
+
+    @interested_listings = current_user.
+      listings.
+      interested.
+      order_by_price_and_transit_time
   end
 
   def update

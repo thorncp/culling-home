@@ -5,6 +5,7 @@ ruby '2.2.0'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'clearance'
 gem 'geo-distance'
+gem 'geocoder'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem 'rails', '4.2.0'
@@ -13,6 +14,7 @@ gem 'skylight'
 gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
 gem 'validate_url', '~> 1.0'
+gem "google_directions"
 
 group :production do
   gem 'pg'
@@ -30,6 +32,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'sqlite3'
+  gem 'pry'
 end
 
 group :test do
