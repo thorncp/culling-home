@@ -6,6 +6,6 @@ namespace :users do
     user = User.create!(email: args[:email], password: password)
     Setting.create!(name: "bart_max_distance", value: "1", user: user)
     Setting.create!(name: "email_body", value: "Rent to me", user: user)
-    puts "Password: #{password}"
+    puts "Created a user. Email: #{args[:email]}, password: #{password}"
   end
 end

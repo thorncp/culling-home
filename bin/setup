@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+if ! [ -f .env ]; then
+  cp .env.template .env
+fi
+
+bundle install
+rake db:setup crawl:listings
+echo "\n\n"
+rake 'users:create[user@example.com]'
