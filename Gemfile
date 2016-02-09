@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.3.0'
 
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'clearance'
